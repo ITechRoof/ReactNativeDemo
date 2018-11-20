@@ -36,7 +36,7 @@ export default class App extends Component {
     return (
       <View style={styles.container}>
         <TextInput 
-          style={{width: 300, borderColor: "gray", borderWidth: 1}}
+          style={{width: 300, borderColor: "gray", borderWidth: 1, height: 50}}
           value={this.state.inputValue}
           placeholder='Placeholder'
           onChangeText={this.onChangeHandler}/>
@@ -49,18 +49,9 @@ export default class App extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
+    padding:50,
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
+  }
 });
