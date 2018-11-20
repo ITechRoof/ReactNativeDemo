@@ -7,7 +7,7 @@
  */
 
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View} from 'react-native';
+import {Platform, StyleSheet, Button, View, TextInput} from 'react-native';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -16,14 +16,31 @@ const instructions = Platform.select({
     'Shake or press menu button for dev menu',
 });
 
-type Props = {};
-export default class App extends Component<Props> {
+// type Props = {};
+export default class App extends Component {
+  state = {
+    inputValue:""
+  };
+
+  onChangeHandler = (value) => {
+    this.setState({
+      inputValue: value
+    });
+  }
+
+  onSubmit = (value) => {
+    alert('You entered ' + this.state.inputValue)
+  }
+
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>Welcome to React Native!</Text>
-        <Text style={styles.instructions}>To get started, edit App.js</Text>
-        <Text style={styles.instructions}>{instructions}</Text>
+        <TextInput 
+          style={{width: 300, borderColor: "gray", borderWidth: 1}}
+          value={this.state.inputValue}
+          placeholder='Placeholder'
+          onChangeText={this.onChangeHandler}/>
+        <Button title='Show entered input' onPress={this.onSubmit}/>
       </View>
     );
   }
