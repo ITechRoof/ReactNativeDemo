@@ -8,6 +8,7 @@
 
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Button, View, TextInput} from 'react-native';
+import { PlaceInput } from "src/PlaceInput";
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -19,13 +20,19 @@ const instructions = Platform.select({
 // type Props = {};
 export default class App extends Component {
   state = {
-    inputValue:""
+    places: []
   };
 
-  onChangeHandler = (value) => {
-    this.setState({
-      inputValue: value
-    });
+  placeAddedHandler = (value) => {
+    this.setState(prevState => {
+      return {
+        places: prevState.places.concat(value)
+      }
+    })
+  }
+
+  placeDeletedHandler = (index) => {
+
   }
 
   onSubmit = (value) => {
@@ -35,12 +42,11 @@ export default class App extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <TextInput 
-          style={{width: 300, borderColor: "gray", borderWidth: 1, height: 50}}
-          value={this.state.inputValue}
-          placeholder='Placeholder'
-          onChangeText={this.onChangeHandler}/>
-        <Button title='Show entered input' onPress={this.onSubmit}/>
+        <PlaceInput onPlaceAdded={this.placeAddedHandler} />
+        <PlaceList
+          places={this.state.places}
+          onItemDeleted={this.placeDeletedHandler}
+        />
       </View>
     );
   }
