@@ -17,19 +17,19 @@ export default class App extends Component {
     places: []
   };
 
-  placeAddedHandler = (value) => {
+  placeAddedHandler = (placeName) => {
     this.setState(prevState => {
       return {
-        places: prevState.places.concat(value)
+        places: prevState.places.concat({key: Math.random(), value : placeName})
       }
     })
   }
 
-  placeDeletedHandler = (index) => {
+  placeDeletedHandler = (key) => {
     this.setState(prevState => {
       return {
-        places: prevState.places.filter((place, i) => {
-          return i !== index;
+        places: prevState.places.filter((place) => {
+          return key !== place.key;
         })
       }
     })
