@@ -13,7 +13,7 @@ const placeDetail = props => {
         );
     } 
     return (
-        <Modal visible={props.selectedPlace !== null && props.selectedPlace !== undefined} animationType="slide">
+        <Modal visible={props.selectedPlace !== null} animationType="slide">
             <View style={styles.modalContainer}>
                 {modalContent}
                 <View>
