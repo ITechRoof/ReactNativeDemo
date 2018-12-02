@@ -23,7 +23,6 @@ const placeDetail = props => {
                             <Icon size={30} name="ios-trash" color="red"/>
                         </View>
                     </TouchableOpacity>
-                    <Button title="Delete" color="red" onPress={props.onItemDeleted} />
                     <Button title="Close" onPress={props.onItemClosed}/>
                 </View>
             </View>
@@ -46,7 +45,7 @@ const styles = StyleSheet.create({
     fontSize:28
   },
   deleteButton: {
-      textAlign:"center"
+      alignItems:"center"
   }
 });
 
