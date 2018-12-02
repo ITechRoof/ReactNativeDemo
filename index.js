@@ -8,10 +8,10 @@ import configureStore from './src/store/configureStore';
 import React from 'react';
 
 const store = configureStore();
-const RNRedux = (
+const RNRedux = () => (
     <Provider store={store}>
         <App/>
     </Provider>
 );
 
-AppRegistry.registerComponent(appName, () => App);
+AppRegistry.registerComponent(appName, () => RNRedux);

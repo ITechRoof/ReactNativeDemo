@@ -3,7 +3,7 @@ import { View, Modal, Button, StyleSheet, Image, Text } from 'react-native';
 
 const placeDetail = props => {
     let modalContent = null;
-
+    // alert(props.selectedPlace);
     if (props.selectedPlace) {
         modalContent = (
             <View>
@@ -13,11 +13,11 @@ const placeDetail = props => {
         );
     } 
     return (
-        <Modal visible={props.selectedPlace !== null} animationType="slide">
+        <Modal visible={props.selectedPlace !== null && props.selectedPlace !== undefined} animationType="slide">
             <View style={styles.modalContainer}>
                 {modalContent}
                 <View>
-                    <Button title="Delete" color="red" onPress={() => props.onItemDeleted(props.selectedPlace.key)} />
+                    <Button title="Delete" color="red" onPress={props.onItemDeleted} />
                     <Button title="Close" onPress={props.onItemClosed}/>
                 </View>
             </View>
