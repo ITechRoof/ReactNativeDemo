@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import { Text, StyleSheet, View } from 'react-native'
+import { StyleSheet, View } from 'react-native'
 
-import ListItem from "/ListItem";
+import ListItem from './ListItem';
 
 const placeList = props => {
   const placesOutput = props.places.map((place, i) => (

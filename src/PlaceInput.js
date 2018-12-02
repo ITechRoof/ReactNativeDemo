@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { StyleSheet, View } from 'react-native'
+import { StyleSheet, View, TextInput, Button } from 'react-native'
 
 export default class PlaceInput extends Component {
     state = {
@@ -22,7 +22,7 @@ export default class PlaceInput extends Component {
 
     render() {
         return (
-        <View>
+        <View style= {styles.inputContainer}>
             <TextInput
              placeholder="An awesome place"
              value={this.state.placeName}

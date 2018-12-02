@@ -7,15 +7,9 @@
  */
 
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Button, View, TextInput} from 'react-native';
-import { PlaceInput } from "src/PlaceInput";
-
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
-  android:
-    'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
+import {Platform, StyleSheet, View} from 'react-native';
+import PlaceInput from "./src/PlaceInput";
+import PlaceList from "./src/PlaceList";
 
 // type Props = {};
 export default class App extends Component {
