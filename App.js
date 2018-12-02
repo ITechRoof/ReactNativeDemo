@@ -11,11 +11,13 @@ import {Platform, StyleSheet, View} from 'react-native';
 import PlaceInput from "./src/PlaceInput";
 import PlaceList from "./src/PlaceList";
 import placeImage from "./src/assets/download.jpeg";
+import PlaceDetail from "./src/PlaceDetail";
 
 // type Props = {};
 export default class App extends Component {
   state = {
-    places: []
+    places: [],
+    selectedPlace: null
   };
 
   placeAddedHandler = (placeName) => {
@@ -24,7 +26,9 @@ export default class App extends Component {
         places: prevState.places.concat({
           key: Math.random(), 
           value : placeName,
-          image: placeImage
+          image: {
+            uri: "https://wallpaperbrowse.com/media/images/3848765-wallpaper-images-download.jpg"
+          }
         })
       }
     })
@@ -35,22 +39,39 @@ export default class App extends Component {
       return {
         places: prevState.places.filter((place) => {
           return key !== place.key;
-        })
+        }),
+        selectedPlace: null
       }
     })
   }
 
-  onSubmit = (value) => {
-    alert('You entered ' + this.state.inputValue)
+  placeSelectedHandler = (key) => {
+    this.setState(prevState => {
+      return {
+        selectedPlace: prevState.places.find(place => {
+          return key === place.key;
+        })
+      };
+    });
+  }
+
+  modelClosedHandler = (key) => {
+    this.setState({
+      selectedPlace : null
+    })
   }
 
   render() {
     return (
       <View style={styles.container}>
+        <PlaceDetail 
+          selectedPlace={this.state.selectedPlace}
+          onItemDeleted={this.placeDeletedHandler}
+          onItemClosed={this.modelClosedHandler}/>
         <PlaceInput onPlaceAdded={this.placeAddedHandler} />
         <PlaceList
           places={this.state.places}
-          onItemDeleted={this.placeDeletedHandler}
+          onItemSelected={this.placeSelectedHandler}
         />
       </View>
     );
